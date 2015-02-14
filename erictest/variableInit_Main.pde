@@ -11,4 +11,4 @@ boolean rectOver = false;
 boolean rectOver2 = false;
 boolean buttonPressed = false;
 boolean GUIisCreated = false;
-boolean youAreDead = false;
+
