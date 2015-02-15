@@ -14,7 +14,7 @@ void gameScreen(){
   background(255);
   // Player Health Bar
   heartRate--;
-  if (heartRate < 120){
+  if (heartRate < 100 || heartRate >= 170){
     gameHealth--;
     healthBarX -= 2.88;
   }
@@ -33,7 +33,7 @@ void gameScreen(){
   fill(#FFFFFF);
   rect(30,30,300,40);
   fill(#FF0000);
-  rect(36,36,healthBarX,28);
+  rect(36,36,gameHealth * healthSizeFactor ,28);
   
   fill(#FFFFFF);
   textFont(gameFont,25);

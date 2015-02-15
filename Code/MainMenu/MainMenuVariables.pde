@@ -6,12 +6,14 @@ int downY = upY + 55;
 
 PFont startButton = createFont("Arial", 40, true);
 boolean buttonPressed = false;
+boolean heartGUINotCreated = true;
 
 //Game Screen Variables
 PFont gameFont=createFont("verdana", 25);
 
 boolean youAreDead = false;
+int buttonPressedState = 0;
 
 float healthBarX = 288;
 int gameHealth = 100;
-int heartRate = 135;
+float healthSizeFactor = 2.88;
