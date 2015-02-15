@@ -41,5 +41,17 @@ void gameScreen(){
   text(gameHealth, 30,95);
 }
 
+/*String[] reverseList(String[] reverseMe){
+  String[] returnList = new String[4];
+ for(int ForInt = 0; ForInt < reverseMe.length; ForInt++){
+  int reverseForInt = reverseMe.length - 1;
+  returnList[ForInt] = reverseMe[reverseForInt];
+  reverseForInt--;
+ }
+ print(returnList);
+ print(reverseMe);
+ return returnList;
+}*/
+
 
 

@@ -22,7 +22,6 @@ synchronized public void win_draw1(GWinApplet appc, GWinData data) { //_CODE_:wi
   }
     PImage heartPicture = loadImage("Data/Heart1_Normal.png");
     if (heartRate >= 127 && heartRate <= 147){
-    println("PENISSSSSSSSS \n ");
     heartPicture = loadImage("Data/Heart1_Normal.png");
     appc.image(heartPicture, 0, 0);
   }
@@ -37,10 +36,59 @@ synchronized public void win_draw1(GWinApplet appc, GWinData data) { //_CODE_:wi
 } //_CODE_:window1:923271:
 
 synchronized public void heartBeat(GWinApplet appc, GWinData data, MouseEvent mevent) { //_CODE_:window1:627846:
+  clickCap = false;
   if(appc.mousePressed){
-     
+      if (heartRate >= 127 && heartRate <= 147){
+        if (clickCap == false){
+          for (int forLooper = 0; forLooper < heartHealthy.length; forLooper++){
+            PImage heartPicture = loadImage(lazy + heartHealthy[forLooper]);
+            appc.image(heartPicture,0,0);
+            clickCap = true;
+          }
+        
+          for (int forLooper = 0; forLooper == (flippedHeartHealthy).length; forLooper++){
+            PImage heartPicture = loadImage(lazy + (flippedHeartHealthy)[forLooper]);
+            appc.image(heartPicture,0,0);
+            clickCap = true;
+          }
+        }
+      }
+      
+      
+      if ((heartRate >= 100 && heartRate <= 126) || (heartRate >= 147 && heartRate <= 170)){
+        if(clickCap == false){
+          for (int forLooper = 0; forLooper < heartMed.length; forLooper++){
+            PImage heartPicture = loadImage(lazy + heartMed[forLooper]);
+            appc.image(heartPicture,0,0);
+            clickCap = true;
+          }
+          
+          for (int forLooper = 0; forLooper == (flippedHeartMed).length; forLooper++){
+            PImage heartPicture = loadImage(lazy + (flippedHeartMed)[forLooper]);
+            appc.image(heartPicture,0,0);
+            clickCap = true;
+          }
+        }
+      }
+      
+      if ((heartRate < 100 || heartRate >= 170)){
+        print("Poeqn");
+        if(clickCap == false){
+          for (int forLooper = 0; forLooper < heartDanger.length; forLooper++){
+            PImage heartPicture = loadImage(lazy + heartDanger[forLooper]);
+            appc.image(heartPicture,0,0);
+            clickCap = true;
+          }
+          for (int forLooper = 0; forLooper == (flippedHeartDanger).length; forLooper++){
+            PImage heartPicture = loadImage(lazy + flippedHeartDanger[forLooper]);
+            appc.image(heartPicture,0,0);
+            clickCap = true;
+          }
+        }
+      }
   }
-} //_CODE_:window1:627846:
+}
+  //_CODE_:window1:627846:
 
 
 
