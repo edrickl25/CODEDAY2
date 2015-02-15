@@ -117,7 +117,7 @@ synchronized public void heartBeat(GWinApplet appc, GWinData data, MouseEvent me
   }
 } //_CODE_:window1:627846:
 
-synchronized public void win_draw2(GWinApplet appc, GWinData data) { //_CODE_:window2:498721:
+public void win_draw2(GWinApplet appc, GWinData data) { //_CODE_:window2:498721:
    if (lungHealth <= 0){
      lungHealth = 0;
    }
@@ -145,11 +145,12 @@ synchronized public void win_draw2(GWinApplet appc, GWinData data) { //_CODE_:wi
 } //_CODE_:window2:498721:
 
 synchronized public void lungBreathe(GWinApplet appc, GWinData data, MouseEvent mevent) { //_CODE_:window2:758619:
+
   clickCapLungs = false;
   if(appc.mousePressed){
-
-      if (lungHeath <= 100 && lungHealth > 66){
-        if (clickCap == false){
+lungHealth = lungHealth + floor(random(50));
+      if (lungHealth <= 100 && lungHealth > 66){
+        if (clickCapLungs == false){
           for (int forLooperLungs = 0; forLooperLungs < lungsHealthy.length; forLooperLungs++){
             PImage lungsPicture = loadImage(lazy + lungsHealthy[forLooperLungs]);
             appc.image(lungsPicture,0,0);
@@ -159,46 +160,48 @@ synchronized public void lungBreathe(GWinApplet appc, GWinData data, MouseEvent 
           for (int forLooperLungs = 0; forLooperLungs == (flippedLungsHealthy).length; forLooperLungs++){
             PImage lungsPicture = loadImage(lazy + (flippedLungsHealthy)[forLooperLungs]);
             appc.image(lungsPicture,0,0);
-            clickCap = true;
+            clickCapLungs = true;
+          }
+        }
+      }
+      
+            if (lungHealth <= 66 && lungHealth > 33){
+        if (clickCapLungs == false){
+          for (int forLooperLungs = 0; forLooperLungs < lungsMed.length; forLooperLungs++){
+            PImage lungsPicture = loadImage(lazy + lungsMed[forLooperLungs]);
+            appc.image(lungsPicture,0,0);
+            clickCapLungs = true;
+          }
+        
+          for (int forLooperLungs = 0; forLooperLungs == (flippedLungsMed).length; forLooperLungs++){
+            PImage lungsPicture = loadImage(lazy + (flippedLungsMed)[forLooperLungs]);
+            appc.image(lungsPicture,0,0);
+            clickCapLungs = true;
+          }
+        }
+      }
+      
+                  if (lungHealth <= 33 && lungHealth > 0){
+        if (clickCapLungs == false){
+          for (int forLooperLungs = 0; forLooperLungs < lungsDanger.length; forLooperLungs++){
+            PImage lungsPicture = loadImage(lazy + lungsDanger[forLooperLungs]);
+            appc.image(lungsPicture,0,0);
+            clickCapLungs = true;
+          }
+        
+          for (int forLooperLungs = 0; forLooperLungs == (flippedLungsDanger).length; forLooperLungs++){
+            PImage lungsPicture = loadImage(lazy + (flippedLungsDanger)[forLooperLungs]);
+            appc.image(lungsPicture,0,0);
+            clickCapLungs = true;
           }
         }
       }
       
       
-      if ((heartRate >= 100 && heartRate <= 126) || (heartRate >= 147 && heartRate <= 170)){
-        if(clickCap == false){
-          for (int forLooper = 0; forLooper < heartMed.length; forLooper++){
-            PImage heartPicture = loadImage(lazy + heartMed[forLooper]);
-            appc.image(heartPicture,0,0);
-            clickCap = true;
-          }
-          
-          for (int forLooper = 0; forLooper == (flippedHeartMed).length; forLooper++){
-            PImage heartPicture = loadImage(lazy + (flippedHeartMed)[forLooper]);
-            appc.image(heartPicture,0,0);
-            clickCap = true;
-          }
-        }
-      }
       
-      if ((heartRate < 100 || heartRate >= 170)){
-        print("Poeqn");
-        if(clickCap == false){
-          for (int forLooper = 0; forLooper < heartDanger.length; forLooper++){
-            PImage heartPicture = loadImage(lazy + heartDanger[forLooper]);
-            appc.image(heartPicture,0,0);
-            clickCap = true;
-          }
-          for (int forLooper = 0; forLooper == (flippedHeartDanger).length; forLooper++){
-            PImage heartPicture = loadImage(lazy + flippedHeartDanger[forLooper]);
-            appc.image(heartPicture,0,0);
-            clickCap = true;
-          }
         }
       }
-    }
-  }
-} //_CODE_:window2:758619:
+ //_CODE_:window2:758619:
 
 
 

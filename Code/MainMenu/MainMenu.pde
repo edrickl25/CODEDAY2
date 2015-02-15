@@ -8,8 +8,8 @@ void setup(){
 }
 
 void draw(){
-       println("lungHealth = " + lungHealth);
-       println("heartRate = " + heartRate);
+       //println("lungHealth = " + lungHealth);
+       //println("heartRate = " + heartRate);
   
   
   if (buttonPressed == true){
