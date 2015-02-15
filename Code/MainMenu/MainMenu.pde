@@ -2,12 +2,16 @@ import g4p_controls.*;
 
 void setup(){
   size(800,600);
-  frameRate(10);
+  frameRate(30);
   loadMainMenuImage();
   startButtonCreate();
 }
 
 void draw(){
+       println("lungHealth = " + lungHealth);
+       println("heartRate = " + heartRate);
+  
+  
   if (buttonPressed == true){
     gameScreen();
     buttonPressedState = 1;
@@ -22,7 +26,6 @@ void draw(){
      createLungsGUI();
      lungHealthLoop = true;
     }
-     println("lungHealth = " + lungHealth);
      lungsGUINotCreated = true;
   }
 }

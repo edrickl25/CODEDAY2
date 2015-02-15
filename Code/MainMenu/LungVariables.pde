@@ -13,4 +13,4 @@ boolean lungHealthLoop = false;
   
   boolean clickCapLungs = false; //say this 5 times fast
   
-  int lungHealth = 100;
+  float lungHealth = 100;

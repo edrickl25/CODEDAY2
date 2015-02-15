@@ -16,8 +16,9 @@ boolean youAreDead = false;
 int buttonPressedState = 0;
 
 float healthBarX = 288;
-int gameHealth = 100;
-float healthSizeFactor = 2.88;
+int gameHealth = 400;
+float healthSizeFactor =.72;
+int score = 0;
 
 int lungTimerCap = 1;
 int lungTimer = 0;

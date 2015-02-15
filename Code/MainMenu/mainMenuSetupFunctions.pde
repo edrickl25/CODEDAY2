@@ -13,9 +13,10 @@ void startButtonCreate(){
 void gameScreen(){
   background(255);
   // Player Health Bar
-  heartRate--;
+  heartRate = heartRate - 0.5;
+  score++;
   if (lungsGUINotCreated){
-    lungHealth--;
+    lungHealth = lungHealth - 0.5;
   }
   if (heartRate < 100 || heartRate >= 170){
     gameHealth--;
@@ -41,7 +42,14 @@ void gameScreen(){
   fill(#FFFFFF);
   textFont(gameFont,25);
   text("health", 5,25);
-  text(gameHealth, 30,95);
+  text(gameHealth / 4, 30,95);
+  
+  // Player Score
+  score++;
+  fill(#FFFF00);
+  rect(600,0,200,100);
+  fill(0);
+  text("score:" + score, 635,55);
 }
 
 /*String[] reverseList(String[] reverseMe){
