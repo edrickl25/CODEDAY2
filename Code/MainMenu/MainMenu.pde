@@ -1,10 +1,19 @@
 void setup(){
   size(800,600);
-  PImage MenuPicture = loadImage("Data/MainMenu.png");
-  image(MenuPicture, 0, 0, MenuPicture.width/2, MenuPicture.height/2);
+  frameRate(30);
+  loadMainMenuImage();
+  startButtonCreate();
 }
 
 void draw(){
-  
-  
+  if (buttonPressed == true){
+    gameScreen();
+  }
 }
+
+void mousePressed(){
+  if (mouseX > leftX && mouseX < downX && mouseY < downY && mouseY > upY){
+    buttonPressed = true;
+  }
+}
+
