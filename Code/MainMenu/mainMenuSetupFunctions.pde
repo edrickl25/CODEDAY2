@@ -14,6 +14,9 @@ void gameScreen(){
   background(255);
   // Player Health Bar
   heartRate--;
+  if (lungsGUINotCreated){
+    lungHealth--;
+  }
   if (heartRate < 100 || heartRate >= 170){
     gameHealth--;
     healthBarX -= 2.88;

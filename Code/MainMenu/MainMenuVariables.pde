@@ -7,6 +7,7 @@ int downY = upY + 55;
 PFont startButton = createFont("Arial", 40, true);
 boolean buttonPressed = false;
 boolean heartGUINotCreated = true;
+boolean lungsGUINotCreated = true;
 
 //Game Screen Variables
 PFont gameFont=createFont("verdana", 25);
@@ -17,3 +18,6 @@ int buttonPressedState = 0;
 float healthBarX = 288;
 int gameHealth = 100;
 float healthSizeFactor = 2.88;
+
+int lungTimerCap = 1;
+int lungTimer = 0;

@@ -8,14 +8,22 @@ void setup(){
 }
 
 void draw(){
-  println("This is the heart Rate:" + heartRate);
   if (buttonPressed == true){
     gameScreen();
     buttonPressedState = 1;
+    lungTimer++;
   }
   if (heartGUINotCreated == false){
     createGUI();
     heartGUINotCreated = true;
+  }
+  if (lungTimer >= lungTimerCap){
+    if (lungHealthLoop == false){
+     createLungsGUI();
+     lungHealthLoop = true;
+    }
+     println("lungHealth = " + lungHealth);
+     lungsGUINotCreated = true;
   }
 }
 
