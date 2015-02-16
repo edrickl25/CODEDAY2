@@ -40,6 +40,9 @@ synchronized public void win_draw1(GWinApplet appc, GWinData data) { //_CODE_:wi
 
 synchronized public void heartBeat(GWinApplet appc, GWinData data, MouseEvent mevent) { //_CODE_:window1:627846:
   clickCap = false;
+  if (heartRate <= 0){
+    heartRate = 0;
+  }
   if(appc.mousePressed){
     
     if (lungHealth <= 100 && lungHealth > 66){      
@@ -117,7 +120,7 @@ synchronized public void heartBeat(GWinApplet appc, GWinData data, MouseEvent me
   }
 } //_CODE_:window1:627846:
 
-public void win_draw2(GWinApplet appc, GWinData data) { //_CODE_:window2:498721:
+synchronized public void win_draw2(GWinApplet appc, GWinData data) { //_CODE_:window2:498721:
    if (lungHealth <= 0){
      lungHealth = 0;
    }
@@ -145,8 +148,10 @@ public void win_draw2(GWinApplet appc, GWinData data) { //_CODE_:window2:498721:
 } //_CODE_:window2:498721:
 
 synchronized public void lungBreathe(GWinApplet appc, GWinData data, MouseEvent mevent) { //_CODE_:window2:758619:
-
   clickCapLungs = false;
+  if (lungHealth <= 0){
+     lungHealth = 0;
+   }
   if(appc.mousePressed){
 lungHealth = lungHealth + floor(random(50));
       if (lungHealth <= 100 && lungHealth > 66){
@@ -200,8 +205,93 @@ lungHealth = lungHealth + floor(random(50));
       
       
         }
+      } //_CODE_:window2:758619:
+
+public void win_draw3(GWinApplet appc, GWinData data) { //_CODE_:window3:222817:
+   
+ 
+   PImage wallPicture = loadImage("Data/Wall.png");
+   if (InitializedEye == false){
+
+   appc.image(wallPicture,0,0);
+   
+    PImage eyePicture = loadImage("Data/Eye_Helmet_Normal1.png");
+    appc.image(eyePicture, bobbingX, bobbingY);
+    InitializedEye = true;
+  }
+    PImage eyePicture = loadImage("Data/Eye_Helmet_Normal1.png");
+    if (eyeHealth <= 100 && eyeHealth > 66){
+    appc.image(wallPicture,0,0);
+    eyePicture = loadImage("Data/Eye_Helmet_Normal1.png");
+    appc.image(eyePicture, bobbingX, bobbingY);
+
+    
+  }
+  if (eyeHealth <= 66 && eyeHealth > 33){  
+    appc.image(wallPicture,0,0);
+    eyePicture = loadImage("Data/Eye_Helmet_Med1.png");
+    appc.image(eyePicture, bobbingX, bobbingY);
+  }
+  if (eyeHealth <= 33 && eyeHealth >= 0){
+    appc.image(wallPicture,0,0);
+    eyePicture = loadImage("Data/Eye_Helmet_Danger1.png");
+    appc.image(eyePicture, bobbingX, bobbingY);
+    gameHealth--;
+  }
+} //_CODE_:window3:222817:
+
+synchronized public void eyeblink(GWinApplet appc, GWinData data, MouseEvent mevent) { //_CODE_:window3:939152:
+   clickCapEye = false;
+   if (eyeHealth <= 0){
+     eyeHealth = 0;
+   }
+   if(eyeHealth > 100){
+     eyeHealth = 99;
+   }
+  if(appc.mousePressed){
+    eyeHealth = eyeHealth + floor(random(50));
+      if (eyeHealth <= 100 && eyeHealth > 66){
+        if (clickCap == false){
+          for (int forLooperEye = 0; forLooperEye < eyeHealthy.length; forLooperEye++){
+            PImage eyePicture = loadImage(lazy + eyeHealthy[forLooperEye]);
+            appc.image(eyePicture,bobbingX,bobbingY);
+          }
+        
+          for (int forLooperEye = 0; forLooperEye == (flippedEyeHealthy).length; forLooperEye++){
+            PImage eyePicture = loadImage(lazy + (flippedEyeHealthy)[forLooperEye]);
+            appc.image(eyePicture,bobbingX,bobbingY);
+          }
+        }
       }
- //_CODE_:window2:758619:
+      
+      
+      
+      if ((eyeHealth <= 66 && eyeHealth > 33)){
+        if(clickCap == false){
+          for (int forLooper = 0; forLooper < eyeMed.length; forLooper++){
+            PImage eyePicture = loadImage(lazy + (eyeMed)[forLooper]);
+            appc.image(eyePicture,bobbingX,bobbingY);
+          }
+          for (int forLooper = 0; forLooper == (flippedEyeMed).length; forLooper++){
+            PImage eyePicture = loadImage(lazy + flippedEyeMed[forLooper]);
+            appc.image(eyePicture,bobbingX,bobbingY);
+          }
+        }
+      }
+      if ((eyeHealth <= 33 && eyeHealth >= 0)){
+        if(clickCap == false){
+          for (int forLooper = 0; forLooper < eyeDanger.length; forLooper++){
+            PImage eyePicture = loadImage(lazy + (eyeDanger)[forLooper]);
+            appc.image(eyePicture,bobbingX,bobbingY);
+          }
+          for (int forLooper = 0; forLooper == (flippedEyeDanger).length; forLooper++){
+            PImage eyePicture = loadImage(lazy + flippedEyeDanger[forLooper]);
+            appc.image(eyePicture,bobbingX,bobbingY);
+          }
+        }
+      }
+    }
+} //_CODE_:window3:939152:
 
 
 
@@ -218,8 +308,19 @@ public void createGUI(){
   window1.addMouseHandler(this, "heartBeat");
 }
 
+public void createEyeGUI(){
+    G4P.messagesEnabled(false);
+  G4P.setGlobalColorScheme(GCScheme.BLUE_SCHEME);
+  G4P.setCursor(ARROW);
+  if(frame != null)
+    frame.setTitle("Sketch Window");
+  window3 = new GWindow(this, "Eyes", 800, 35, 640, 400, false, JAVA2D);
+  window3.addDrawHandler(this, "win_draw3");
+  window3.addMouseHandler(this, "eyeblink");
+}
+
 public void createLungsGUI(){
-  G4P.messagesEnabled(false);
+     G4P.messagesEnabled(false);
   G4P.setGlobalColorScheme(GCScheme.BLUE_SCHEME);
   G4P.setCursor(ARROW);
   if(frame != null)
@@ -228,9 +329,9 @@ public void createLungsGUI(){
   window2.addDrawHandler(this, "win_draw2");
   window2.addMouseHandler(this, "lungBreathe");
 }
-
 // Variable declarations 
 // autogenerated do not edit
 GWindow window1;
 GWindow window2;
+GWindow window3;
 

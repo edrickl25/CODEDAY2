@@ -14,3 +14,7 @@ boolean lungHealthLoop = false;
   boolean clickCapLungs = false; //say this 5 times fast
   
   float lungHealth = 100;
+  
+  
+int lungTimerCap = 200;
+int lungTimer = 0;

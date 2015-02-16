@@ -15,6 +15,9 @@ void gameScreen(){
   // Player Health Bar
   heartRate = heartRate - 0.5;
   score++;
+  if(eyeGUINotCreated){
+    eyeHealth = eyeHealth - 0.5;
+  }
   if (lungsGUINotCreated){
     lungHealth = lungHealth - 0.5;
   }
@@ -24,12 +27,15 @@ void gameScreen(){
   }
   if (gameHealth <= 0){
     youAreDead = true;
+    player.close();
+    minim.stop();
+    super.stop();
     noLoop();
   }
   if (youAreDead){
     fill(0);
     textFont(gameFont, 48);
-    text("YOU LOSE", 350,250);
+    text("YOU LOSE", 280,320);
   }
   noStroke();
   fill(#EA3B3B);
